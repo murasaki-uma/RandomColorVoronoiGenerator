@@ -5,8 +5,8 @@ vector<ofVbo> vbos;
 ofVboMesh voroMesh;
 vector<int> counters;
 int counter;
-ofFloatColor c;
-
+//ofFloatColor c;
+vector<ofFloatColor> colors;
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetWindowTitle("ofxVoronoi / example_basic");
@@ -23,8 +23,12 @@ void ofApp::setup(){
     voronoi.setPoints(points);
     
     voronoi.generate();
-    
-    
+    vector <ofxVoronoiCell> cells = voronoi.getCells();
+
+    for (int i = 0; i < cells.size(); i++) {
+        ofFloatColor c = ofFloatColor( ofRandom(0.0,1.0), ofRandom(0.0,1.0), ofRandom(0.0,1.0) );
+        colors.push_back(c);
+    }
 }
 
 //--------------------------------------------------------------
@@ -40,8 +44,6 @@ void ofApp::update(){
         // Draw cell borders
         ofVbo vbo;
         int counter = 0;
-        ofSetColor(120);
-        c = ofFloatColor(ofRandom(0.0,1.0),ofRandom(0.0,1.0),ofRandom(0.0,1.0));
         for(int j=0; j<cells[i].pts.size(); j++) {
             ofPoint lastPt = cells[i].pts[cells[i].pts.size()-1];
             if(j > 0) {
@@ -51,10 +53,10 @@ void ofApp::update(){
             
             if(!isBorder(lastPt) || !isBorder(thisPt)) {
                 voroMesh.addVertex(lastPt);
-                voroMesh.addColor(c);
+                voroMesh.addColor(colors[i]);
                 counter++;
                 voroMesh.addVertex(thisPt);
-                voroMesh.addColor(c);
+                voroMesh.addColor(colors[i]);
                 counter++;
             }
             
@@ -131,8 +133,9 @@ void ofApp::mousePressed(int x, int y, int button){
     vbos.clear();
     voroMesh.clear();
     counters.clear();
+    colors.clear();
     counter = 0;
-    c = ofFloatColor(0,0,0);
+    //c = ofFloatColor(0,0,0);
     ofRectangle bounds = ofRectangle(10, 10, ofGetWidth()-20, ofGetHeight()-20);
     
     int pointCount = ofRandom(100,200);
@@ -144,6 +147,13 @@ void ofApp::mousePressed(int x, int y, int button){
     voronoi.setPoints(points);
     
     voronoi.generate();
+    
+    vector <ofxVoronoiCell> cells = voronoi.getCells();
+    
+    for (int i = 0; i < cells.size(); i++) {
+        ofFloatColor c = ofFloatColor( ofRandom(0.0,1.0), ofRandom(0.0,1.0), ofRandom(0.0,1.0) );
+        colors.push_back(c);
+    }
 
 }
 
