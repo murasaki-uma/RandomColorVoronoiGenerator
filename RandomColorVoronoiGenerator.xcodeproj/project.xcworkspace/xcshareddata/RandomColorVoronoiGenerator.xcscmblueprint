@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E7399F7C5F6F82CF3CA09411495588CC19D68032",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "183C10D9A6076F06706513038F80CE3782D38B30" : 0,
+    "E7399F7C5F6F82CF3CA09411495588CC19D68032" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "873D39D1-854D-47FB-A77B-76CE2948A117",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "183C10D9A6076F06706513038F80CE3782D38B30" : "..\/..\/addons\/ofxVoronoi",
+    "E7399F7C5F6F82CF3CA09411495588CC19D68032" : "RandomColorVoronoiGenerator\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RandomColorVoronoiGenerator",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RandomColorVoronoiGenerator.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/madc\/ofxVoronoi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "183C10D9A6076F06706513038F80CE3782D38B30"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/murasaki-uma\/RandomColorVoronoiGenerator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E7399F7C5F6F82CF3CA09411495588CC19D68032"
+    }
+  ]
+}

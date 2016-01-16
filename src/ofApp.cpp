@@ -12,28 +12,31 @@ void ofApp::setup(){
     ofSetWindowTitle("ofxVoronoi / example_basic");
     ofBackground(255);
     
+    // 最大領域
     ofRectangle bounds = ofRectangle(10, 10, ofGetWidth()-20, ofGetHeight()-20);
     
-    int pointCount = ofRandom(100,200);
+    // ランダムな母点を生成
+    int pointCount = 900;
     int seed = ofRandom(33);
     
     vector<ofPoint> points = generateRandomPoints(pointCount, seed, bounds);
     
+    // 最大の矩形と母点の位置情報をもとにボロノイを生成
     voronoi.setBounds(bounds);
     voronoi.setPoints(points);
-    
     voronoi.generate();
+    
+    // Cellの情報をいただく。
     vector <ofxVoronoiCell> cells = voronoi.getCells();
-
-    for (int i = 0; i < cells.size(); i++) {
-        ofFloatColor c = ofFloatColor( ofRandom(0.0,1.0), ofRandom(0.0,1.0), ofRandom(0.0,1.0) );
-        colors.push_back(c);
-    }
+    
+    
+    img.load("baseColor.jpg");
+    img.resize(ofGetWidth(), ofGetHeight());
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
+    colors.clear();
     vector <ofxVoronoiCell> cells = voronoi.getCells();
     ofRectangle bounds = voronoi.getBounds();
     
@@ -44,6 +47,8 @@ void ofApp::update(){
         // Draw cell borders
         ofVbo vbo;
         int counter = 0;
+        ofColor c = img.getPixels().getColor(cells[i].pt.x,cells[i].pt.y);
+        colors.push_back(c);
         for(int j=0; j<cells[i].pts.size(); j++) {
             ofPoint lastPt = cells[i].pts[cells[i].pts.size()-1];
             if(j > 0) {
@@ -81,6 +86,7 @@ void ofApp::draw(){
     for (int i = 0; i < vbos.size(); i++) {
         vbos[i].draw(GL_POLYGON, 0, counters[i]);
     }
+    //img.draw(0,0,ofGetWidth(),ofGetHeight());
 }
 
 //--------------------------------------------------------------
@@ -138,7 +144,7 @@ void ofApp::mousePressed(int x, int y, int button){
     //c = ofFloatColor(0,0,0);
     ofRectangle bounds = ofRectangle(10, 10, ofGetWidth()-20, ofGetHeight()-20);
     
-    int pointCount = ofRandom(100,200);
+    int pointCount = ofRandom(900,1200);
     int seed = ofRandom(33);
     
     vector<ofPoint> points = generateRandomPoints(pointCount, seed, bounds);
